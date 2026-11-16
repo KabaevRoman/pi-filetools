@@ -1,10 +1,10 @@
 import { Type } from 'typebox';
 import { readFile, stat } from 'node:fs/promises';
 import { isAbsolute, resolve, matchesGlob, relative, extname } from 'node:path';
-import type { Runtime } from '../runtime/runtime.ts';
-import { canonical, hash, optionalText, textResult } from '../runtime/utils.ts';
-import { trackedWrite } from './checkpoints.ts';
-import { runProcess } from '../backends/process.ts';
+import type { Runtime } from 'pi-code-core/runtime/runtime';
+import { canonical, hash, optionalText, textResult } from 'pi-code-core/runtime/utils';
+import { trackedWrite } from 'pi-code-core/extensions/checkpoints';
+import { runProcess } from 'pi-code-core/backends/process';
 export const object = (properties: any) => Type.Object(properties, { additionalProperties: false });
 const str = () => Type.String({ minLength: 1 });
 const optionalInt = (minimum: number, maximum: number) => Type.Optional(Type.Integer({ minimum, maximum }));
